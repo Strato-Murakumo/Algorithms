@@ -21,7 +21,6 @@ function shuffleTest(M, N) {
     for (let k = 0; k < M; k++) {
         num[k] = (new Array(M)).fill(0);
     }
-    console.log(num)
     for (let i = 0; i < N; i++) {
         // 每次初始化之前都将数组初始化为a[i] = i
         for (let j = 0; j < M; j++) {

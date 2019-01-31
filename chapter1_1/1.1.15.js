@@ -1,6 +1,5 @@
 function histogram(arr, n) {
     let result = (new Array(n)).fill(0)
-    console.log(result)
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] >= 0 && arr[i] < n) {
             result[arr[i]]++;
