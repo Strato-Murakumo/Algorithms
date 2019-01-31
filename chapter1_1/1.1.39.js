@@ -1,7 +1,7 @@
 var params = process.argv.splice(2);
 var T = parseInt(params[0]);
 
-var numsArr = [Math.pow(10, 3), Math.pow(10, 4), Math.pow(10, 5), Math.pow(10, 6)];
+var numsArr = [Math.pow(10, 6)];
 var result = {};
 
 // 运行T遍
@@ -19,8 +19,15 @@ for (let i = 0; i < T; i++) {
         result[numsArr[j]].times = 0;
         result[numsArr[j]].arrA = result[numsArr[j]].arrA.sort();
         result[numsArr[j]].arrB = result[numsArr[j]].arrB.sort();
+        let memoryList = {}  //命中缓存
         for (let k = 0; k < result[numsArr[j]].arrA.length; k++) {
-            binarySearch(result[numsArr[j]].arrA[k], result[numsArr[j]].arrB) > -1 ? result[numsArr[j]].times++ : '';
+            if (memoryList[result[numsArr[j]].arrA[k]] == true) {
+                result[numsArr[j]].times++
+            }
+            else if (binarySearch(result[numsArr[j]].arrA[k], result[numsArr[j]].arrB) > -1) {
+                result[numsArr[j]].times++
+                memoryList[result[numsArr[j]].arrA[k]] = true
+            }
         }
     }
 }
@@ -33,6 +40,9 @@ console.log(result)
 function binarySearch(key, arr = []) {
     let lo = 0;
     let hi = arr.length - 1;
+    if (key < arr[0] || key > arr[arr.length - 1]) {
+        return -1;
+    }
     while (lo <= hi) {
         let mid = parseInt(lo + (hi - lo) / 2);
         if (key < arr[mid]) hi = mid - 1;
