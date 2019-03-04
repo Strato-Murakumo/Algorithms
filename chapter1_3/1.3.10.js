@@ -1,3 +1,5 @@
+// 1.3.10 编写一个过滤器InfixToPostfix，将算术表达式由中序表达式转为后序表达式
+
 var Stack = (function () {
     const arrs = new WeakMap();
     class Stack {

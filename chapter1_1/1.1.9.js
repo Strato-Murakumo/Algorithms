@@ -11,7 +11,6 @@ function toBinaryString(num) {
 }
 console.log(toBinaryString(10))
 
-
 function toBinaryString(num) {
     if (num % 1 !== 0) {
         console.log('请输入整数')

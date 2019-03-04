@@ -10,6 +10,8 @@ var Stack = (function () {
             s.push(element);
         }
         // 出栈
+        // 类似的，如果实现的队列，出队操作应该先翻转数组，出队，再翻转，而非直接使用
+        // unshift()操作，有利于效率提升
         pop() {
             let s = arrs.get(this);
             return s.pop()

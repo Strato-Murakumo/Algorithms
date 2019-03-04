@@ -1,3 +1,5 @@
+// 1.3.4 编写一个Stack的用例Parentheses,从标准输入中读取一个文本流并使用栈判定其中的括号是否配对完整.例如[()]{}{[()]}为true,对于[(])程序则打印false。
+
 var Stack = (function () {
     const arrs = new WeakMap();
     class Stack {
