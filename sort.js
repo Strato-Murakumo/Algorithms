@@ -106,3 +106,25 @@ function insertSort(arr) {
     return arr;
 }
 console.log(insertSort(example));
+
+//快速排序
+// 思路:
+// - 随机选择数组中的一个数 A，以这个数为基准
+// - 其他数字跟这个数进行比较，比这个数小的放在其左边，大的放到其右边
+// - 经过一次循环之后，A 左边为小于 A 的，右边为大于 A 的
+// - 这时候将左边和右边的数再递归上面的过程
+//Todo 优化
+var example = [8, 94, 15, 88, 55, 76, 21, 39];
+function quickSort(arr) {
+    if (arr.length <= 1) {
+        return arr;
+    }
+    let pivot = arr[Math.floor(arr.length / 2)];
+    let left = [];
+    let right = [];
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] < pivot ? left.push(arr[i]) : right.push(arr[i]);
+    }
+    return quickSort(left).concat([pivot], quickSort(right));
+}
+console.log(quickSort(example));
