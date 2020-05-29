@@ -1,0 +1,40 @@
+<div style="background: red; width:30px; height:30px;border-radius:50%">
+  <canvas id="myCanvas" width="30" height="30" style="transform: rotate(-90deg);"></canvas>
+</div>
+
+  var canvas = document.getElementById("myCanvas"),
+        ctx = canvas.getContext("2d"),
+        width = canvas.width,
+        height = canvas.height
+
+    function drawArc(s, e) {
+        var x = width / 2, // center x  
+            y = height / 2, // center y  
+            radius = 15,
+            counterClockwise = false;
+
+        ctx.fillStyle = '#eee';
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.arc(x, y, radius, s, e, counterClockwise);
+        ctx.fill();
+    }
+
+    var step = 1,  //相当于是1弧度 = 180°/π；
+        startAngle = 0,
+        endAngle = 0;
+
+    var animation_interval = 100,
+        n = 60; // count of arc  把圆拆分为多少块来做动画~
+
+    var animation = function() {
+        if (step <= n) {
+            endAngle = step * 2 * Math.PI / n;
+            drawArc(startAngle, endAngle);
+            step++;
+        } else {
+            clearInterval(animation);
+        }
+    };
+
+    setInterval(animation, animation_interval);
